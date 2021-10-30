@@ -1,0 +1,52 @@
+.container {
+  flex: 1 1;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  align-content: center;
+  flex-direction: row;
+}
+
+.upperContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 68vh;
+}
+
+.lowerContainer {
+  display: flex;
+}
+
+.logo {
+  width: 90vh;
+}
+
+.buttonArea {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+  padding: 8vh 0 0 0;
+}
+
+.text {
+  font-family: EB Garamond;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 63px;
+  text-align: center;
+  color: #c1458c;
+}
+
+.mary {
+  height: 50vh;
+  position: relative;
+  margin: 0;
+  top: 37vh;
+  left: 9vh;
+}

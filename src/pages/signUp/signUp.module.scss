@@ -16,22 +16,29 @@
   flex: 1;
   display: flex;
   flex-wrap: wrap;
-  align-items: stretch;
+  align-items: center;
   flex-direction: column;
   align-content: center;
   justify-content: space-between;
-  padding: 8vh 0 0 0;
 }
+
 
 .text {
   padding-top: 2vh;
-  font-size: 1.2rem;
+  font-size: 3rem;
   line-height: 20px;
   text-decoration-line: none;
   color: #c1458c;
-  padding: 3vh 0 3vh 30vh;
+  margin-bottom: 7vh;
 }
 
-.google {
-  width: 8vh;
+.passwordText{
+  font-family: Bitter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 2vh;
+  color: #00A5AA;
 }
+

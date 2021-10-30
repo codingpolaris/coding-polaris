@@ -3,10 +3,11 @@ import styles from './login.module.scss';
 import Api from '../../services/api'
 import logo from '../../assets/Logo.png';
 import google from '../../assets/Google.png';
+import { Button } from '../../components/button/button';
+import { Input } from '../../components/input/input';
 
 export function Login() {
     const history = useHistory();
-  
     async function signIn() {
       const teste = await Api.get('');
       console.log(teste);
@@ -17,9 +18,9 @@ export function Login() {
       <div className={styles.container}>
         <img  className={styles.logo} src={logo} alt="Logo"/>
         <div className={styles.inputArea}>
-        <input className={styles.input} type='text' placeholder='Usuario' />
-        <input className={styles.input} type='password' placeholder='Senha' />
-        <button onClick={signIn}>Login</button>
+        <Input type='text' placeholder='Usuario' />
+        <Input type='password' placeholder='Senha' />
+        <Button name={'primary'} onClick={signIn}>Login</Button>
         </div>
         <a className={styles.text} href='./'>
           Esqueci minha senha
