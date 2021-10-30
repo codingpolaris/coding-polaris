@@ -1,0 +1,25 @@
+input {
+    width: 60vh;
+    height: 9vh;
+    background: #fffff0;
+    border: 1px solid #00a5aa;
+    border-radius: 50px;
+    padding-top: 2vh;
+    margin-bottom: 2vh;
+    text-align: center;
+    &:focus {
+      outline: none;
+      border-color: #00a5aa;
+      box-shadow: 0 0 10px #c1458c;
+    }
+  }
+  input,
+  select,
+  textarea {
+    padding-top: 0;
+    font-size: 2rem;
+  }
+  ::placeholder {
+    color: #d3d3d3;
+    font-size: 1.6rem;
+}
