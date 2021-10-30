@@ -9,9 +9,8 @@ import { Input } from '../../components/input/input';
 export function Login() {
     const history = useHistory();
     async function signIn() {
-      const teste = await Api.get('');
-      console.log(teste);
-      history.push('');
+      //const teste = await Api.get('');
+      history.push('/home');
     }
     
     return (

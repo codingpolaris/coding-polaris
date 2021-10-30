@@ -12,6 +12,7 @@ function Routes() {
         <Route path='/' exact component={OnBoarding} />
         <Route path='/login' exact component={Login} />
         <Route path='/signUp' exact component={SignUp} />
+        <Route path='/home' exact component={Home} />
       </Switch>
     </BrowserRouter>
   );
