@@ -11,10 +11,9 @@ export function SignUp() {
     console.log(teste);
     history.push('');
   }
-  let bool: boolean = false;
   return (
     <div className={styles.container}>
-      <Header isLogin={bool} />
+      <Header isLogin={false} />
       <div className={styles.inputArea}>
         <strong className={styles.text}>Cadastro</strong>
         <Input type='text' placeholder='Usuario' />
