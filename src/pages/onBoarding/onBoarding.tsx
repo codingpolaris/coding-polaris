@@ -12,7 +12,7 @@ export function OnBoarding() {
     history.push('login');
   }
   function register() {
-    history.push('signup');
+    history.push('signUp');
   }
 
 
