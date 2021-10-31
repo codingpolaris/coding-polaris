@@ -17,9 +17,9 @@ export function SignUp() {
       <div className={styles.inputArea}>
         <strong className={styles.text}>Cadastro</strong>
         <Input type='text' placeholder='Usuario' />
-        <Input type='password' placeholder='Nome' />
+        <Input type='text' placeholder='Nome' />
         <Input type='text' placeholder='Email' />
-        <Input type='password' placeholder='Senha' />
+        <Input type='password' placeholder='Senha' minLength={8} maxLength={15} />
         <p className={styles.passwordText}>Pelo menos 8 caracteres</p>
         <Input type='password' placeholder='Como você deseja ser tratado?' />
         <Button name={'primary'} onClick={signIn}>
@@ -29,3 +29,4 @@ export function SignUp() {
     </div>
   );
 }
+
