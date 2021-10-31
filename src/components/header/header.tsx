@@ -6,6 +6,7 @@ import { ReactComponent as ProfileIcon } from '../../assets/icons/Profile.svg';
 
 interface Props {
   isLogin: boolean;
+  selected?: string;
 }
 
 export function Header(props: Props) {
@@ -14,9 +15,17 @@ export function Header(props: Props) {
       <img className={styles.logo} src={logo} alt='Logo' />
       {props.isLogin ? (
         <div className={styles.buttonsMenu}>
-          <ContentIcon color='red' />
-          <ProfileIcon />
-          <ConfigIcon className={styles.icons} />
+          <a href="/path" > 
+            <ContentIcon
+              className={props.selected === 'Content' ? styles.selected : ''}
+            />
+          </a>
+          <ProfileIcon
+            className={props.selected === 'Profile' ? styles.selected : ''}
+          />
+          <ConfigIcon
+            className={props.selected === 'Config' ? styles.selected : ''}
+          />
         </div>
       ) : null}
     </div>
