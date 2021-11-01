@@ -8,7 +8,7 @@ import { ReactComponent as Arrow } from '../../assets/icons/Arrow 1.svg';
 export function Home() {
   return (
     <div className={styles.container}>
-      <Header isLogin={true} />
+      <Header isLogin={true} selected={'Content'} />
       <div className={styles.textArea}>
         <span className={styles.welcomeText}>
           Seja bem-vinda <span className={styles.name}>Alexa</span>
