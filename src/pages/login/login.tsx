@@ -21,7 +21,7 @@ export function Login() {
         <Input type='password' placeholder='Senha' />
         <Button name={'primary'} onClick={signIn}>Login</Button>
         </div>
-        <a className={styles.text} href='/newPassword'>
+        <a className={styles.text} href='/passwordReset'>
           Esqueci minha senha
         </a>
         <img className={styles.google} src={google} alt="Icone Google"/>
