@@ -4,3 +4,20 @@
     align-items: center;
     margin-bottom: 1.7vh;
 }
+
+.photoArea {
+    margin: 5vh;
+    padding-left: 50vh;
+    padding-right: 35vh;
+    display: flex;
+    align-items: center;
+}
+
+.photo {
+    border:10.75vh solid #00A5AA;
+    border-radius: 50%;
+}
+
+.uploadButton {
+    padding-left: 10vh;
+}
