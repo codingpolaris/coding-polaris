@@ -4,6 +4,7 @@ import { Home } from '../pages/home/home';
 import { OnBoarding } from '../pages/onBoarding/onBoarding';
 import { SignUp } from '../pages/signUp/signUp';
 import { PasswordReset } from '../pages/passwordReset/passwordReset';
+import { NewPassword } from '../pages/newPassword/newPassword';
 import { Path } from '../pages/path/path';
 
 function Routes() {
@@ -15,6 +16,7 @@ function Routes() {
         <Route path='/signUp' exact component={SignUp} />
         <Route path='/home' exact component={Home} />
         <Route path='/passwordReset' exact component={PasswordReset} />
+        <Route path='/newPassword' exact component={NewPassword} />
         <Route path='/path' exact component={Path} />
       </Switch>
     </BrowserRouter>
