@@ -23,9 +23,11 @@ export function Header(props: Props) {
           <ProfileIcon
             className={props.selected === 'Profile' ? styles.selected : ''}
           />
-          <ConfigIcon
-            className={props.selected === 'Config' ? styles.selected : ''}
-          />
+          <a href="/configuration" > 
+            <ConfigIcon
+              className={props.selected === 'Configuration' ? styles.selected : ''}
+            />
+          </a>
         </div>
       ) : null}
     </div>

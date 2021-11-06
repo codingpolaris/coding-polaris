@@ -1,7 +1,9 @@
 .header {
   display: flex;
   width: 100%;
-  background-color:#FFFBCA;
+  background-color:#FFFBCA; 
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.351);
+  margin-bottom: 3vh;
 }
 
 .logo {
@@ -17,5 +19,5 @@
 }
 
 .selected {
-stroke: #00a5aa;
+  stroke: #00a5aa;
 }
