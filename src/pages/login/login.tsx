@@ -18,7 +18,7 @@ export function Login() {
         <img  className={styles.logo} src={logo} alt="Logo"/>
         <div className={styles.inputArea}>
         <Input type='text' placeholder='Usuario' />
-        <Input type='password' placeholder='Senha' />
+        <Input type='password' placeholder='Senha' minLength={8} maxLength={15}/>
         <Button name={'primary'} onClick={signIn}>Login</Button>
         </div>
         <a className={styles.text} href='/passwordReset'>
