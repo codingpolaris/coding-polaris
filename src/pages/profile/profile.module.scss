@@ -1,3 +1,8 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
 .profileArea {
     display: flex;
     flex-direction: column;
@@ -30,4 +35,17 @@
 
 .userProfile a {
     margin: 3vh; 
+}
+
+.achievementArea {
+    display: flex;
+    flex-direction: column;  
+    margin-top: 3vh;
+    margin-bottom: 10vh;
+    justify-content: flex-start;
+    margin-top: 3vh;
+    text-align: center;
+    font-family: Courier Prime;
+    font-size: 48px;
+    color: #C1458C;
 }
