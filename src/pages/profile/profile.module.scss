@@ -1,0 +1,33 @@
+.profileArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photoArea {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.photo {
+    border:10.75vh solid #00A5AA;
+    border-radius: 50%;
+    
+}
+
+.userProfile {
+    display: flex;
+    flex-direction: column;
+    font-family: Courier Prime;
+    font-size: 18px;
+    line-height: 20px;
+    text-align: center;
+    color: #696969;
+    padding-top: 3vh;  
+}
+
+.userProfile a {
+    margin: 3vh; 
+}
