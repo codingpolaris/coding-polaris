@@ -7,6 +7,8 @@ import { PasswordReset } from '../pages/passwordReset/passwordReset';
 import { NewPassword } from '../pages/newPassword/newPassword';
 import { Path } from '../pages/path/path';
 import { Configuration } from '../pages/configuration/configuration';
+import { Contents } from '../pages/contents/contents';
+
 
 function Routes() {
   return (
@@ -20,6 +22,7 @@ function Routes() {
         <Route path='/newPassword' exact component={NewPassword} />
         <Route path='/path' exact component={Path} />
         <Route path='/configuration' exact component={Configuration} />
+        <Route path='/contents' exact component={Contents} />
       </Switch>
     </BrowserRouter>
   );
