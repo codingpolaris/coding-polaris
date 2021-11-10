@@ -8,6 +8,12 @@ import { Card } from '../../components/card/card';
 import { ReactComponent as UploadIcon } from '../../assets/icons/Upload.svg';
 
 export function Configuration() {
+    const history = useHistory();
+    async function genderOptions() {
+        //const teste = await Api.get('');
+        history.push('/genderOptions');
+    }
+
     return (
         <div className={styles.container}>     
           <Header isLogin={true} selected={'Configuration'} />
@@ -19,7 +25,7 @@ export function Configuration() {
                     </div>
                     <Button name={'secundary'}>Alterar nome</Button>
                     <Button name={'secundary'}>Mudar senha</Button>
-                    <Button name={'secundary'}>Modificar gênero</Button>
+                    <Button name={'secundary'} onClick={genderOptions}>Modificar gênero</Button>
                 </Card>        
             </div>
         </div>
