@@ -26,4 +26,9 @@
     line-height: 43px;
     color: #00A5AA;  
     margin: 5vh;
-}
+    
+    &:disabled {
+      background: #C1458C;
+      color: #fffbca;  
+    }
+  }
