@@ -1,3 +1,12 @@
+.container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+    flex-direction: column;
+}
+
 .buttonArea {
     display: flex;
     flex-direction: column;
