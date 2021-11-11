@@ -11,6 +11,7 @@
     line-height: 43px;
     color: #fffbca;
     margin: 5vh;
+    cursor: pointer;
   }
 
   .secondary {
@@ -26,6 +27,7 @@
     line-height: 43px;
     color: #00A5AA;  
     margin: 5vh;
+    cursor: pointer;
     
     &:disabled {
       background: #C1458C;

@@ -18,10 +18,10 @@ export function Login() {
     
     return (
       <div className={styles.container}>
-        <img  className={styles.logo} src={logo} alt="Logo"/>
+        <img className={styles.logo} src={logo} alt="Logo"/>
         <div className={styles.inputArea}>
         <Input type='text' placeholder='Usuario' onChange={event => user.username = event.target.value}/>
-        <Input type='password' placeholder='Senha' minLength={8} maxLength={15}onChange={event => user.password = event.target.value}/>
+        <Input type='password' placeholder='Senha' minLength={8} maxLength={15} onChange={event => user.password = event.target.value}/>
         <Button name={'primary'} onClick={signIn}>Login</Button>
         </div>
         <a className={styles.text} href='/passwordReset'>
