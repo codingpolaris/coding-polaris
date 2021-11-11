@@ -11,7 +11,7 @@ export function SignUp() {
 
   async function signIn() {
     const teste = await Api.post('users', user);
-    console.log("o caraljo", user);
+    //console.log("teste", user);
     //history.push('');
   }
 

@@ -14,8 +14,6 @@ interface Props {
 
 export function Header(props: Props) {
   const history = useHistory();
-  const pathName = history.location.pathname;
-  console.log(history)
 
   return (
     <div className={styles.header}>
