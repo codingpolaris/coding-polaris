@@ -16,28 +16,51 @@
   flex: 1;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: stretch;
   flex-direction: column;
   align-content: center;
   justify-content: space-between;
+  padding: 8vh 0 0 0;
 }
 
 .text {
+  display: flex;
   padding-top: 2vh;
   font-size: 3rem;
-  line-height: 20px;
-  text-decoration-line: none;
   color: #c1458c;
+  justify-content: center;
   margin-bottom: 7vh;
 }
 
 .passwordText{
+  display: flex;
   font-family: Bitter;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 22px;
   margin-bottom: 2vh;
+  justify-content: center;
   color: #00A5AA;
 }
 
+.genderOptions {
+  width: 60vh;
+  height: 9vh;
+  background: no-repeat center #fffff0 ;
+  border: 1px solid #00a5aa;
+  border-radius: 50px;
+  margin-bottom: 2vh;
+  color: #00A5AA;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0px 8px 8px 0px #00a5aa;
+  font-size: 1.4rem;
+  appearance: none;
+
+  &:focus {
+    outline: none;
+    border-color: #c1458c;
+    box-shadow: 0px 8px 8px 0px #c1458c;    
+  }
+}

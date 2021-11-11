@@ -22,7 +22,7 @@ export function GenderOptions() {
     
     return (
       <div className={styles.container}>
-        <Header isLogin={true} selected={'Configuration'} />
+        <Header needBack={true} isLogin={true} selected={'Configuration'} />
         <img  className={styles.logo} src={logo} alt="Logo"/>
         <div className={styles.genderButtons}>
             <Button name={'secondary'} onClick={isSelected} disabled={active}>
