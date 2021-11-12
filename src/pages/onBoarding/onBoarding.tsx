@@ -15,7 +15,6 @@ export function OnBoarding() {
     history.push('signUp');
   }
 
-
   return (
     <div className={styles.container}>
       <div className={styles.upperContainer}>
