@@ -14,6 +14,11 @@ export function Configuration() {
         history.push('/genderOptions');
     }
 
+    async function newPassword() {
+        //const teste = await Api.get('');
+        history.push('/newPassword');
+    }
+
     return (
         <div className={styles.container}>     
           <Header isLogin={true} selected={'Configuration'} />
@@ -24,7 +29,7 @@ export function Configuration() {
                         <UploadIcon className={styles.uploadButton}></UploadIcon>
                     </div>
                     <Button name={'secundary'}>Alterar nome</Button>
-                    <Button name={'secundary'}>Mudar senha</Button>
+                    <Button name={'secundary'} onClick={newPassword}>Mudar senha</Button>
                     <Button name={'secundary'} onClick={genderOptions}>Modificar gênero</Button>
                 </Card>        
             </div>
