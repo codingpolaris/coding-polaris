@@ -21,8 +21,7 @@ export function Contents() {
                     <a>Algoritmos [blog.pantuza]</a>
                 </div>
             </Card>
-            </div>  
-            
+            </div>       
         </div>
     );
 }

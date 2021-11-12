@@ -10,6 +10,7 @@ import { Configuration } from '../pages/configuration/configuration';
 import { GenderOptions } from '../pages/genderOptions/genderOptions';
 import { Profile } from '../pages/profile/profile';
 import { Contents } from '../pages/contents/contents';
+import { Questions } from '../pages/questions/questions';
 
 function Routes() {
   return (
@@ -26,6 +27,7 @@ function Routes() {
         <Route path='/genderOptions' exact component={GenderOptions} />
         <Route path='/profile' exact component={Profile} />
         <Route path='/contents' exact component={Contents} />
+        <Route path='/questions' exact component={Questions} />
       </Switch>
     </BrowserRouter>
   );
