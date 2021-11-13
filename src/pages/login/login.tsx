@@ -13,7 +13,7 @@ export function Login() {
     async function signIn() {
       const teste = await Api.post('auth/login', user);
       console.log(teste);
-      //history.push('/home');
+      history.push('/home');
     }
     
     return (
