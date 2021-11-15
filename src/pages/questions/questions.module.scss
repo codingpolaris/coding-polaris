@@ -20,9 +20,11 @@
 
 .radioContainer  {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: flex-start;
     font-size: 1.2rem;
+    flex-wrap: nowrap;
+    align-items: center;
 
     input {
         
@@ -32,4 +34,13 @@
           }
     }
 
+}
+
+.radio{
+    width: 3vh;
+    margin-bottom: 0;
+}
+
+.correctAnswer{
+    color:red;
 }
