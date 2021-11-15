@@ -5,6 +5,6 @@ export default interface ICharacter{
     knowledge:number,
     vitality:number,
     level: number,
-    experience:number
-    user: IUser
+    experience:number,
+    user: IUser,
 }
