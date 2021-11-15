@@ -10,9 +10,7 @@ import IContents from "../../models/iContents";
 
 export function Contents() {
   const { state } = useLocation<any>();
-  console.log('state', state);
   const contents = state.params as IContents[];
-  console.log('Contents', contents);
   return (
     <div className={styles.container}>
       <div className={styles.card}>

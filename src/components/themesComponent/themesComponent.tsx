@@ -19,7 +19,6 @@ export default function ThemesComponent(props: ICharacterThemeRequest) {
   let contents = [] as IContents[];
   let challenges = [] as IChallenge[];
 
-
   useEffect(() => {
     async function getTheme() {
       try {
@@ -38,23 +37,23 @@ export default function ThemesComponent(props: ICharacterThemeRequest) {
 
   async function getContent(id: number) {
     try {
-        const { data } = await Api.get(`contents/${id}`);
-        contents=data;
-        history.push("/contents", { params: contents });
-      } catch (err) {
-        alert("ocorreu algum erro");
-      }
+      const { data } = await Api.get(`contents/${id}`);
+      contents = data;
+      history.push("/contents", { params: contents });
+    } catch (err) {
+      alert("ocorreu algum erro");
     }
+  }
 
-    async function getChallenges(id: number) {
-        try {
-            const { data } = await Api.get(`challenges/${id}`);
-            challenges=  data;          
-            history.push("/questions", { params: challenges });
-          } catch (err) {
-            alert("ocorreu algum erro");
-          }
-        }
+  async function getChallenges(id: number) {
+    try {
+      const { data } = await Api.get(`challenges/${id}`);
+      challenges = data;
+      history.push("/questions", { params: challenges, state: props.characterId });
+    } catch (err) {
+      alert("ocorreu algum erro");
+    }
+  }
 
   async function postTheme(themeId: number) {
     try {
@@ -81,7 +80,10 @@ export default function ThemesComponent(props: ICharacterThemeRequest) {
                 <Button name={"primary"} onClick={() => postTheme(theme.id)}>
                   {theme.name}
                 </Button>
-                <Button name={"primary"} onClick={() => getChallenges(theme.id)}>
+                <Button
+                  name={"primary"}
+                  onClick={() => getChallenges(theme.id)}
+                >
                   Atividade
                 </Button>
               </div>

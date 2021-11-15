@@ -21,8 +21,6 @@ export function Home() {
     async function getCharacter() {
       try {
         await Api.get(`characters/${user.id}`).then((resp) => {
-          console.log("Opa");
-          console.log(resp.data);
           setCharacter(resp.data);
           Api.get(`characters-paths/${resp.data.id}`).then((resp) => {
             setCharacterPath(resp.data);
