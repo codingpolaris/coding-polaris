@@ -29,7 +29,7 @@ export default function ThemesComponent(props: ICharacterThemeRequest) {
 
         setThemes(theme);
       } catch (err) {
-        alert("ocorreu algum erro");
+        alert("ocorreu algum erro theme");
       }
     }
     getTheme();
@@ -41,17 +41,16 @@ export default function ThemesComponent(props: ICharacterThemeRequest) {
       contents = data;
       history.push("/contents", { params: contents });
     } catch (err) {
-      alert("ocorreu algum erro");
+      alert("ocorreu algum erro content");
     }
   }
 
   async function getChallenges(id: number) {
     try {
-      const { data } = await Api.get(`challenges/${id}`);
-      challenges = data;
-      history.push("/questions", { params: challenges, state: props.characterId });
+      const { data } = await Api.get(`challenges/${id}/${props.characterId}`);
+      history.push("/questions", { params: data.sort(()=> Math.random()-0.5), state: props.characterId });
     } catch (err) {
-      alert("ocorreu algum erro");
+      alert("ocorreu algum erro questions");
     }
   }
 

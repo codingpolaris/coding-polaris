@@ -20,24 +20,28 @@ export function Home() {
   useEffect(() => {
     async function getCharacter() {
       try {
-        await Api.get(`characters/${user.id}`).then((resp) => {
-          setCharacter(resp.data);
-          Api.get(`characters-paths/${resp.data.id}`).then((resp) => {
-            setCharacterPath(resp.data);
-            setNoob(!noob);
-            if (resp.data.length <= 0) {
-              const register = {} as ICharacterPathRequest;
-              register.characterId = character.id;
-              register.pathId = 1;
-              Api.post("characters-paths/", register);
-            }
-          });
-        });
+          const {data} = await Api.get(`characters/${user.id}`);
+          setCharacter(data);
+          getCharacterPath(data.id);
       } catch (err) {
         alert("ocorreu algum erro no personagem");
       }
     }
-
+    async function getCharacterPath(id:number){
+      try{
+        const {data} = await Api.get(`characters-paths/${id}`);
+        setCharacterPath(data);
+        setNoob(!noob);
+        if (data.length <= 0) {
+          const register = {} as ICharacterPathRequest;
+          register.characterId = character.id;
+          register.pathId = 1;
+          Api.post("characters-paths/", register);
+        }
+      }catch(err){
+        alert("ocorreu algum erro nos paths");
+      }
+    }
     getCharacter();
   }, []);
 

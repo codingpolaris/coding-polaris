@@ -1,5 +1,4 @@
-
-export default interface ICharacterThemeRequest{
-    characterId:number,
-    themeId: number,
+export default interface ICharacterThemeRequest {
+  characterId: number;
+  themeId: number;
 }
