@@ -17,6 +17,11 @@ export function Configuration() {
         history.push('/newPassword');
     }
 
+    async function logOut() {
+        //const teste = await Api.get('');
+        history.push('/');
+    }
+
     return (
         <div className={styles.container}>     
           <Header isLogin={true} selected={'Configuration'} />
@@ -28,7 +33,7 @@ export function Configuration() {
                     </div>                   
                     <Button name={'secundary'} onClick={newPassword}>Mudar senha</Button>
                     <Button name={'secundary'} onClick={genderOptions}>Modificar gênero</Button>
-                    <Button name={'secundary'}>Desconectar conta</Button>
+                    <Button name={'secundary'} onClick={logOut}>Desconectar conta</Button>
                 </Card>        
             </div>
         </div>

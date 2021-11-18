@@ -11,6 +11,7 @@ import { ReactComponent as UploadIcon } from '../../assets/icons/Upload.svg';
 export function Contents() {
     return (
         <div className={styles.container}> 
+            <Header needBack={true} isLogin={false} />
             <div className={styles.card}>
             <Card>
                 <div className={styles.contentsTitle}>

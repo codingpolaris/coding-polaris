@@ -6,6 +6,7 @@ import google from '../../assets/Google.png';
 import { Button } from '../../components/button/button';
 import { Input } from '../../components/input/input';
 import ILogin from '../../models/Ilogin'
+import { Header } from '../../components/header/header';
 
 export function Login() {
     const history = useHistory();
@@ -18,16 +19,16 @@ export function Login() {
     
     return (
       <div className={styles.container}>
+        <Header needBack={true} isLogin={false} />
         <img className={styles.logo} src={logo} alt="Logo"/>
         <div className={styles.inputArea}>
         <Input type='text' placeholder='Usuario' onChange={event => user.username = event.target.value}/>
         <Input type='password' placeholder='Senha' minLength={8} maxLength={15} onChange={event => user.password = event.target.value}/>
-        <Button name={'primary'} onClick={signIn}>Login</Button>
+        <Button id={ "seila" } name={'primary'} onClick={signIn}>Login</Button>
         </div>
         <a className={styles.text} href='/passwordReset'>
           Esqueci minha senha
         </a>
-        <img className={styles.google} src={google} alt="Icone Google"/>
       </div>
     );
   }
