@@ -17,13 +17,14 @@ export function Configuration() {
     history.push("/newPassword", { params: characterId });
   }
 
+  async function logOut() {
+    //const teste = await Api.get('');
+    history.push("/");
+  }
+
   return (
     <div className={styles.container}>
-      <Header
-        isLogin={true}
-        selected={"Configuration"}
-        characterId={characterId}
-      />
+      <Header isLogin={true} selected={"Configuration"} />
       <div className={styles.buttonArea}>
         <Card>
           <div className={styles.photoArea}>
@@ -36,7 +37,9 @@ export function Configuration() {
           <Button name={"secundary"} onClick={genderOptions}>
             Modificar gênero
           </Button>
-          <Button name={"secundary"}>Desconectar conta</Button>
+          <Button name={"secundary"} onClick={logOut}>
+            Desconectar conta
+          </Button>
         </Card>
       </div>
     </div>

@@ -1,18 +1,28 @@
-import { InputHTMLAttributes } from 'react';
+import { HTMLInputTypeAttribute, InputHTMLAttributes, useState } from 'react';
+import { InputType } from 'zlib';
 
 import { ReactComponent as Eye } from '../../assets/icons/Eye.svg';
 
 import styles from './input.module.scss';
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
+  isPassword?: boolean;
+}
+export function Input(props:Props) {
+  const [showPassword, setShowPassword] = useState(false)
+  function revealPassword() {
+    console.log(props.type)
+    setShowPassword(!showPassword)
+  }
 
-type InputProps = InputHTMLAttributes<HTMLInputElement>
-
-export function Input(props:InputProps) {
-    
   return (
     <div>
-    <input className={props.type==='password'? styles.inputPassword : styles.input} {...props}></input>  
       {
-        props.type === "password" ? <Eye className={styles.seePassword}/> : null
+        props.isPassword ? 
+        <div> 
+          <input type={showPassword ? 'text' : 'password'} className={props.type==='password' ? styles.inputPassword : styles.input} {...props}/> 
+            <Eye className={styles.seePassword} onClick={revealPassword}/> 
+        </div> : 
+          <input className={props.type==='password'? styles.inputPassword : styles.input} {...props}/>
       }
     </div>
     );

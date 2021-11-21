@@ -37,14 +37,14 @@ export function NewPassword() {
         <img className={styles.logo} src={logo} alt="Logo" />
         <div className={styles.inputArea}>
           <Input
-            type="password"
+            isPassword={true}
             minLength={8}
             maxLength={15}
             placeholder="Senha anterior"
             onChange={(event) => (newPasword.password = event.target.value)}
           />
           <Input
-            type="password"
+            isPassword={true}
             minLength={8}
             maxLength={15}
             placeholder="Nova senha"
@@ -52,7 +52,7 @@ export function NewPassword() {
           />
           <p className={styles.passwordText}>Pelo menos 8 caracteres</p>
           <Input
-            type="password"
+            isPassword={true}
             minLength={8}
             maxLength={15}
             placeholder="Confirme a senha"

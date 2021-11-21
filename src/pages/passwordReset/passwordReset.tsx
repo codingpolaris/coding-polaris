@@ -5,6 +5,8 @@ import logo from "../../assets/Logo.png";
 import { Input } from "../../components/input/input";
 import Api from "../../services/api";
 import IPasswordRequest from "../../models/requests/iPasswordRequest";
+import { Header } from '../../components/header/header';
+
 export function PasswordReset() {
   const history = useHistory();
   const newPasword: IPasswordRequest = {} as IPasswordRequest;
@@ -22,8 +24,8 @@ export function PasswordReset() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.upperContainer}>
-        <img className={styles.logo} src={logo} alt="Logo" />
+      <Header needBack={true} isLogin={false}/>
+        <img className={styles.logo} src={logo} alt='Logo' />
         <div className={styles.inputArea}>
           <Input
             type="text"
@@ -36,7 +38,6 @@ export function PasswordReset() {
             Enviar
           </Button>
         </div>
-      </div>
     </div>
   );
 }

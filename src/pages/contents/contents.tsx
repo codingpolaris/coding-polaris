@@ -13,6 +13,7 @@ export function Contents() {
   const contents = state.params as IContents[];
   return (
     <div className={styles.container}>
+      <Header needBack={true} isLogin={false} />
       <div className={styles.card}>
         <Card>
           <div className={styles.contentsTitle}>
