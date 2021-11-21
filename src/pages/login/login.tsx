@@ -29,7 +29,6 @@ export function Login() {
       });
       const user: IUser = data;
       const character: ICharacter = await (await Api.get(`characters/${user.id}`)).data
-      console.log(character);
       history.push("/home", { params: character.id });
     } catch (e) {
       alert("Get user failed");

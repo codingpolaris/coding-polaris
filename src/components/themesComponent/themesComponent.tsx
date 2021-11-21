@@ -52,7 +52,6 @@ export default function ThemesComponent(props: ICharacterThemeRequest) {
   async function getChallenges(id: number) {
     try {
       const { data } = await Api.get(`challenges/${id}/${props.characterId}`);
-      console.log(register);
       const actualTry = register.find((history) => history.id === id);
       history.push("/questions", {
         params: data.sort(() => Math.random() - 0.5),

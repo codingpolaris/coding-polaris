@@ -68,9 +68,7 @@ export function Questions() {
       getData();
       setConfirm(!confirm);
     }
-    console.log(challenges.length);
     if(challenges.length===1 && count===0){
-      console.log(challenges.length);
       setIsLast(!isLast);
       postTheme();
     }

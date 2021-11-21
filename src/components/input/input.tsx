@@ -10,7 +10,6 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 export function Input(props:Props) {
   const [showPassword, setShowPassword] = useState(false)
   function revealPassword() {
-    console.log(props.type)
     setShowPassword(!showPassword)
   }
 

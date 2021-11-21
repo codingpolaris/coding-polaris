@@ -15,7 +15,6 @@ export function SignUp() {
       alert(`Bem vindo ${user.full_name}`);
       history.push('');
     }catch(err){
-      console.log(err);
       alert('Ocorreu algum erro');
     }
   }
