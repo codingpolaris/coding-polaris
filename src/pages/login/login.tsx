@@ -7,6 +7,7 @@ import { Button } from "../../components/button/button";
 import { Input } from "../../components/input/input";
 import ILogin from "../../models/Ilogin";
 import IUser from "../../models/iUser";
+import { Header } from "../../components/header/header";
 
 export function Login() {
   const history = useHistory();
@@ -22,7 +23,7 @@ export function Login() {
   }
   async function getUser(token: string) {
     try {
-      const { data } = await Api.get("profile", {
+      const { data } = await Api.get("data", {
         headers: { Authorization: `bearer ${token}` },
       });
       const user: IUser = data;
@@ -33,6 +34,7 @@ export function Login() {
   }
   return (
     <div className={styles.container}>
+      <Header needBack={true} isLogin={false} />
       <img className={styles.logo} src={logo} alt="Logo" />
       <div className={styles.inputArea}>
         <Input
@@ -41,7 +43,7 @@ export function Login() {
           onChange={(event) => (login.username = event.target.value)}
         />
         <Input
-          type="password"
+          isPassword={true}
           placeholder="Senha"
           minLength={8}
           maxLength={15}
@@ -54,7 +56,6 @@ export function Login() {
       <a className={styles.text} href="/passwordReset">
         Esqueci minha senha
       </a>
-      <img className={styles.google} src={google} alt="Icone Google" />
     </div>
   );
 }

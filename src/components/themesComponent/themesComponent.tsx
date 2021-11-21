@@ -47,7 +47,7 @@ export default function ThemesComponent(props: ICharacterThemeRequest) {
 
   async function getChallenges(id: number) {
     try {
-      const { data } = await Api.get(`challenges/${id}`);
+      const { data } = await Api.get(`challenges/${id}/${ props.characterId }`);
       challenges = data;
       history.push("/questions", { params: challenges, state: props.characterId });
     } catch (err) {
@@ -87,7 +87,6 @@ export default function ThemesComponent(props: ICharacterThemeRequest) {
                   Atividade
                 </Button>
               </div>
-
               <Arrow />
             </div>
           ))}

@@ -18,10 +18,10 @@ export function NewPassword() {
           <div className={styles.logoArea}>           
             <img className={styles.logo} src={logo} alt='Logo' />
             <div className={styles.inputArea}>             
-              <Input type='password' minLength={8} maxLength={15} placeholder='Senha anterior' />
-              <Input type='password' minLength={8} maxLength={15} placeholder='Nova senha' />
+              <Input isPassword={true} minLength={8} maxLength={15} placeholder='Senha anterior' />
+              <Input isPassword={true} minLength={8} maxLength={15} placeholder='Nova senha' />
               <p className={styles.passwordText}>Pelo menos 8 caracteres</p>
-              <Input type='password' minLength={8} maxLength={15} placeholder='Confirme a senha' />
+              <Input isPassword={true} minLength={8} maxLength={15} placeholder='Confirme a senha' />
               <Button name={'primary'} >Enviar</Button>
           </div>
             </div>
