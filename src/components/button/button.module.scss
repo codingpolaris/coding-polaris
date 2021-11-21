@@ -12,6 +12,10 @@
     color: #fffbca;
     margin: 5vh;
     cursor: pointer;
+    &:disabled {
+      background: #C1458C;
+      color: #fffbca;  
+    }
   }
 
   .secondary {

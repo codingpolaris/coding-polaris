@@ -1,5 +1,4 @@
-
-export default interface ICharacterPathRequest{
-    characterId:number,
-    pathId: number,
+export default interface ICharacterPathRequest {
+  characterId: number;
+  pathId: number;
 }

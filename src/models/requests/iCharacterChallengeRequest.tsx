@@ -3,7 +3,7 @@ export default interface ICharacterChallengeRequest {
   
   characterId: number;
 
-  ChallengeId: number;
+  challengeId: number;
 
   achievementId: number;
 
@@ -15,5 +15,5 @@ export default interface ICharacterChallengeRequest {
 
   end_date?: string;
 
-  class?: string;
+  class?: number;
 }

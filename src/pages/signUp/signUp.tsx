@@ -10,7 +10,14 @@ export function SignUp() {
   const user: ISignUp = {} as ISignUp;
 
   async function signIn() {
-    const teste = await Api.post('users', user);
+    try{
+      await Api.post('users', user);
+      alert(`Bem vindo ${user.full_name}`);
+      history.push('');
+    }catch(err){
+      console.log(err);
+      alert('Ocorreu algum erro');
+    }
   }
 
   return (
