@@ -94,7 +94,9 @@ export default function ThemesComponent(props: ICharacterThemeRequest) {
   function verifyTheme(themeId: number): boolean {
     let isDisabled = true;
     register.forEach((history) => {
-      if (history.id === themeId) {
+      console.log(history);
+      console.log(themeId);
+      if (history.themeId === themeId) {
         isDisabled = history.isCompleted;
       }
     });
