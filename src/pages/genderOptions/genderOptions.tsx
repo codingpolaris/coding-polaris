@@ -15,7 +15,7 @@ export function GenderOptions() {
 
   async function changeGender() {
     try {
-      await Api.post(`gender/${characterId}`, user);
+      await Api.patch(`gender/${characterId}`, user);
       history.goBack();
     } catch (err) {
       alert("Ocorreu algum problema");
