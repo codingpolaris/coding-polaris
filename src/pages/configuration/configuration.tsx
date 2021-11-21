@@ -24,7 +24,11 @@ export function Configuration() {
 
   return (
     <div className={styles.container}>
-      <Header isLogin={true} selected={"Configuration"} />
+      <Header
+        isLogin={true}
+        selected={"Configuration"}
+        characterId={characterId}
+      />
       <div className={styles.buttonArea}>
         <Card>
           <div className={styles.photoArea}>
