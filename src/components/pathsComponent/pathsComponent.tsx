@@ -20,20 +20,24 @@ export default function PathsComponent() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <p className={styles.secondaryText}>Escolha sua trilha</p>
-      <div className={styles.buttonArea}>
-        {paths.map((path: IPaths) => (
-          <div>
-            {path.acess >= 1 ? (
-              <Button name={"primary"}>{path.name}</Button>
-            ) : null}
-            {path.acess >= 5 ? (
-              <p className={styles.comingSoonText}>Em breve</p>
-            ) : null}
+    <div>
+      {paths.length > 0 ? (
+        <div className={styles.container}>
+          <p className={styles.secondaryText}>Escolha sua trilha</p>
+          <div className={styles.buttonArea}>
+            {paths.map((path: IPaths) => (
+              <div>
+                {path.acess >= 1 ? (
+                  <Button name={"primary"}>{path.name}</Button>
+                ) : null}
+                {path.acess >= 5 ? (
+                  <p className={styles.comingSoonText}>Em breve</p>
+                ) : null}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      ) : null}
     </div>
   );
 }

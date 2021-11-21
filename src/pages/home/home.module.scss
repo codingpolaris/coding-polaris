@@ -31,6 +31,21 @@
   color: #c1458c;
 }
 
+.primaryText {
+  font-family: EB Garamond;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 47px;
+  text-align: center;
+  margin-bottom: 8vh;
+  margin-top: 2vh;
+  color: #696969;
+  span {
+    font-style: italic;
+  }
+}
+
 .secondaryText {
   font-family: EB Garamond;
   font-style: normal;

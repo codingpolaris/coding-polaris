@@ -5,7 +5,6 @@ import { OnBoarding } from '../pages/onBoarding/onBoarding';
 import { SignUp } from '../pages/signUp/signUp';
 import { PasswordReset } from '../pages/passwordReset/passwordReset';
 import { NewPassword } from '../pages/newPassword/newPassword';
-import { Path } from '../pages/path/path';
 import { Configuration } from '../pages/configuration/configuration';
 import { GenderOptions } from '../pages/genderOptions/genderOptions';
 import { Profile } from '../pages/profile/profile';
@@ -22,7 +21,6 @@ function Routes() {
         <Route path='/home' exact component={Home} />
         <Route path='/passwordReset' exact component={PasswordReset} />
         <Route path='/newPassword' exact component={NewPassword} />
-        <Route path='/path' exact component={Path} />
         <Route path='/configuration' exact component={Configuration} />
         <Route path='/genderOptions' exact component={GenderOptions} />
         <Route path='/profile' exact component={Profile} />

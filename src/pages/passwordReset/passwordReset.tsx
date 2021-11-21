@@ -14,7 +14,7 @@ export function PasswordReset() {
 
   return (
     <div className={styles.container}>
-      <Header needBack={true} isLogin={false} />
+      <Header needBack={true} isLogin={false}/>
         <img className={styles.logo} src={logo} alt='Logo' />
         <div className={styles.inputArea}>
           <Input type='text' placeholder='Email' />
