@@ -10,6 +10,7 @@ interface Props {
   isLogin: boolean;
   selected?: string;
   needBack?: boolean; 
+  characterId?:number;
 }
 
 export function Header(props: Props) {
@@ -23,17 +24,17 @@ export function Header(props: Props) {
 
       {props.isLogin ? (
         <div className={styles.buttonsMenu}>
-          <a href="/path" > 
+          <a onClick={() => history.push('home', { params: props.characterId })} > 
             <ContentIcon
               className={props.selected === 'Content' ? styles.selected : ''}
             />
           </a>
-          <a href="/profile" > 
+          <a onClick={() => history.push('profile', { params: props.characterId })} > 
             <ProfileIcon
               className={props.selected === 'Profile' ? styles.selected : ''}
             />
           </a>
-          <a href="/configuration" > 
+          <a onClick={() => history.push('configuration', { params: props.characterId })} > 
             <ConfigIcon
               className={props.selected === 'Configuration' ? styles.selected : ''}
             />

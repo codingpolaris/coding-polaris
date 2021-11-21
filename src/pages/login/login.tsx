@@ -7,6 +7,7 @@ import { Button } from "../../components/button/button";
 import { Input } from "../../components/input/input";
 import ILogin from "../../models/Ilogin";
 import IUser from "../../models/iUser";
+import ICharacter from "../../models/iCharacter";
 
 export function Login() {
   const history = useHistory();
@@ -22,11 +23,13 @@ export function Login() {
   }
   async function getUser(token: string) {
     try {
-      const { data } = await Api.get("profile", {
+      const { data } = await Api.get("data", {
         headers: { Authorization: `bearer ${token}` },
       });
       const user: IUser = data;
-      history.push("/home", { params: user });
+      const character: ICharacter = await (await Api.get(`characters/${user.id}`)).data
+      console.log(character);
+      history.push("/home", { params: character.id });
     } catch (e) {
       alert("Get user failed");
     }
