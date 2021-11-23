@@ -17,6 +17,7 @@ export function Home() {
   const [characterPath, setCharacterPath] = useState({} as ICharacterPath[]);
   const [noob, setNoob] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [actualPath, setActualPath] = useState({} as ICharacterPath);
 
   useEffect(() => {
     async function getCharacter() {
@@ -28,12 +29,13 @@ export function Home() {
         alert("ocorreu algum erro no personagem");
       }
     }
+
     async function getCharacterPath(id: number) {
       try {
         const { data } = await Api.get(`characters-paths/${id}`);
         setCharacterPath(data);
         setNoob(!noob);
-        setLoading(!loading);
+        setActualPath(data[data.length - 1]);
         if (data.length <= 0) {
           const register = {} as ICharacterPathRequest;
           register.characterId = characterId;
@@ -41,6 +43,7 @@ export function Home() {
           Api.post("characters-paths/", register);
           getCharacterPath(id);
         }
+        setLoading(!loading);
       } catch (err) {
         alert("ocorreu algum erro nos paths");
       }
@@ -62,17 +65,17 @@ export function Home() {
           </span>
           {noob ? (
             <div>
-              {characterPath.length <= 0 ? (
+              {actualPath.isCompleted ? (
                 <div className={styles.textArea}>
                   <span className={styles.primaryText}>
                     Agora chegou sua vez de se aprofundar em uma
                     <span className={styles.stack}> stack</span>
                   </span>
-                  <PathsComponent />
+                  <PathsComponent characterId={characterId} pathId={actualPath.path.id} />
                 </div>
               ) : (
                 <ThemesComponent
-                  pathId={characterPath[0].path.id}
+                  pathId={actualPath.path.id}
                   characterId={character.characterId}
                 />
               )}
