@@ -4,5 +4,6 @@ export default interface IChallenge{
     name: string,
     level:number,
     minLevel: number,
+    type: string,
     content:IContents,
 }

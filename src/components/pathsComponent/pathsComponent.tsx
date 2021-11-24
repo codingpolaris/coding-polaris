@@ -3,9 +3,12 @@ import Api from "../../services/api";
 import { Button } from "../../components/button/button";
 import IPaths from "../../models/IPaths";
 import { useEffect, useState } from "react";
+import ICharacterPathRequest from "../../models/requests/iCharacterPathRequest";
+import { useHistory } from "react-router";
 
-export default function PathsComponent() {
+export default function PathsComponent(props: ICharacterPathRequest) {
   const [paths, setPaths] = useState({} as IPaths[]);
+  const history = useHistory();
 
   useEffect(() => {
     async function getPath() {
@@ -19,6 +22,26 @@ export default function PathsComponent() {
     getPath();
   }, []);
 
+  async function setCharacterPath(id: number) {
+    try {
+      const register = {} as ICharacterPathRequest;
+      register.characterId = props.characterId;
+      register.pathId = id;
+      await Api.post("characters-paths/", register);
+      history.push("/home", { params: props.characterId });
+    } catch (err) {
+      alert("ocorreu algum erro nos paths");
+    }
+  }
+
+  function verifyPath(path: IPaths): boolean {
+    let isDisabled = true;
+    if (path.access < 5) {
+      isDisabled = false;
+    }
+
+    return isDisabled;
+  }
   return (
     <div>
       {paths.length > 0 ? (
@@ -27,10 +50,16 @@ export default function PathsComponent() {
           <div className={styles.buttonArea}>
             {paths.map((path: IPaths) => (
               <div>
-                {path.acess >= 1 ? (
-                  <Button name={"primary"}>{path.name}</Button>
+                {path.access >= 1 ? (
+                  <Button
+                    name={"primary"}
+                    onClick={() => setCharacterPath(path.id)}
+                    disabled={verifyPath(path)}
+                  >
+                    {path.name}
+                  </Button>
                 ) : null}
-                {path.acess >= 5 ? (
+                {path.access >= 5 ? (
                   <p className={styles.comingSoonText}>Em breve</p>
                 ) : null}
               </div>
