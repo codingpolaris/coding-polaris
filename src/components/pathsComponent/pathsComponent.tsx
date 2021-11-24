@@ -36,7 +36,7 @@ export default function PathsComponent(props: ICharacterPathRequest) {
 
   function verifyPath(path: IPaths): boolean {
     let isDisabled = true;
-    if (path.acess < 5) {
+    if (path.access < 5) {
       isDisabled = false;
     }
 
@@ -50,7 +50,7 @@ export default function PathsComponent(props: ICharacterPathRequest) {
           <div className={styles.buttonArea}>
             {paths.map((path: IPaths) => (
               <div>
-                {path.acess >= 1 ? (
+                {path.access >= 1 ? (
                   <Button
                     name={"primary"}
                     onClick={() => setCharacterPath(path.id)}
@@ -59,7 +59,7 @@ export default function PathsComponent(props: ICharacterPathRequest) {
                     {path.name}
                   </Button>
                 ) : null}
-                {path.acess >= 5 ? (
+                {path.access >= 5 ? (
                   <p className={styles.comingSoonText}>Em breve</p>
                 ) : null}
               </div>
