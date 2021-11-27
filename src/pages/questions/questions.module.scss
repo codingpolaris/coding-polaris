@@ -48,3 +48,9 @@
 .incorrectAnswer{
     color:#EA4335;
 }
+
+.cardQuestions{
+    display: flex;
+    flex-direction: column;
+    margin: 3vh;
+}

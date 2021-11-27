@@ -79,8 +79,10 @@ export function Questions() {
     setConfirm(!confirm);
     if (response.type === "correct") {
       request.accepts = 1;
+      alert("Parabéns, você acertou!");
     } else {
       request.fails = 1;
+      alert("Infelizmente, você errou! Estude com os conteúdos e tente novamente!");
     }
     sendAnswer();
   }
@@ -125,12 +127,12 @@ export function Questions() {
   }
   return (
     <div className={styles.container}>
-      <Header needBack={true} isLogin={true} characterId={characterId}/>
+      <Header needBack={true} isLogin={false} characterId={characterId}/>
       <img className={styles.logo} src={logo} alt="Logo" />
       <div className={styles.card}>
         <Card>
           {!isLast ? (
-            <div>
+            <div className={styles.cardQuestions}>
               <div className={styles.questionTitle}>
                 <a>{challenge.name}</a>
               </div>
