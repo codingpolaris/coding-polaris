@@ -80,7 +80,7 @@ export function Questions() {
     }
   }
 
-  function formarText(text: string): object[] {
+  function formatText(text: string): object[] {
     const stringText = `${text}`;
     let newText = stringText
       .split("\r\n")
@@ -160,7 +160,7 @@ export function Questions() {
             {!isLast ? (
               <div>
                 <div className={styles.questionTitle}>
-                  <p>{formarText(challenge.name.valueOf())}</p>
+                  <p>{formatText(challenge.name.valueOf())}</p>
                 </div>
                 {winStreak >= 1 ? (
                   <p className={styles.streakText}>Sequencia de acertos: {winStreak}</p>
@@ -187,7 +187,7 @@ export function Questions() {
                                 : styles.answer
                             }
                           >
-                            {formarText(answer.text)}
+                            {formatText(answer.text)}
                           </span>
                         </div>
                       ))}
