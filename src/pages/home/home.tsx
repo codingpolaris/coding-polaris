@@ -40,7 +40,7 @@ export function Home() {
           const register = {} as ICharacterPathRequest;
           register.characterId = characterId;
           register.pathId = 1;
-          Api.post("characters-paths/", register);
+          await Api.post("characters-paths/", register);
           getCharacterPath(id);
         }
         setLoading(!loading);
