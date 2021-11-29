@@ -3,7 +3,6 @@ import styles from "./questions.module.scss";
 import { Header } from "../../components/header/header";
 import { Button } from "../../components/button/button";
 import logo from "../../assets/Logo.png";
-import { Input } from "../../components/input/input";
 import { Card } from "../../components/card/card";
 import IChallenge from "../../models/iChallenge";
 import IAnswer from "../../models/iAnswer";
@@ -22,15 +21,24 @@ export function Questions() {
 
   let request = {} as ICharacterChallengeRequest;
   const [resp, setResp] = useState({} as ICharacterChallengeRequest);
-  const [isLast, setIsLast] = useState(challenges.length<=1);
-  let count = 1;
+  const [isLast, setIsLast] = useState(challenges.length <= 1);
   const [answers, setAnswers] = useState([] as IAnswer[]);
   const [response, setResponse] = useState({} as IAnswer);
   const [confirm, setConfirm] = useState(false);
-  const  [challenge, setChallenge] = useState(challenges[0]);
+  const [loading, setLoading] = useState(true);
 
+  const [winStreak, setWinStreak] = useState(0);
+  const [winCount, setWinCount] = useState(0);
+  const [loseCount, setLoseCount] = useState(0);
+
+  const [challenge, setChallenge] = useState(challenges[0]);
   useEffect(() => {
-    getAnswer();
+    if(challenge.id){
+      getAnswer(challenge.id);
+    }else{
+      setIsLast(!isLast);
+
+    }
     getData();
   }, []);
 
@@ -40,46 +48,56 @@ export function Questions() {
       request.challengeId = challenge.id;
       request.achievementId = 1;
       request.level = challenge.level;
-      request.class =themeId;
+      request.class = themeId;
       const { data } = await Api.post(`characters-challenges/`, request);
       setResp(data);
     } catch (err) {
       console.log(err);
     }
   }
-  async function getAnswer() {
+
+  async function getAnswer(id: number) {
     try {
-      const { data } = await Api.get(`answers/${challenge.id}`);
-      setAnswers(data);
+      const { data } = await Api.get(`answers/${id}`);
+      setAnswers(data.sort(() => Math.random() - 0.5));
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
   }
 
   async function onChangeQuestion() {
-    if ( count < challenges.length ) {
-      setChallenge(challenges[count]);
-      count = count+1;
-      if (response.type === "correct") {
-        challenges.shift();
-        count = 0;
-      } 
-      getAnswer();
-      getData();
+    if (challenges.length > 1) {
+      setLoading(true);
+      challenges.shift();
+      setChallenge(challenges[0]);
+      await getAnswer(challenges[0].id);
+      await getData();
       setConfirm(!confirm);
     }
-    if(challenges.length===1 && count===0){
+    else {
       setIsLast(!isLast);
-      postTheme();
     }
+  }
 
+  function formatText(text: string): object[] {
+    const stringText = `${text}`;
+    let newText = stringText
+      .split("\r\n")
+      .map((item, i) => <p key={i}>{item}</p>);
+    return newText;
   }
 
   function verifyAnswer() {
     setConfirm(!confirm);
+
     if (response.type === "correct") {
+      setWinStreak(winStreak + 1);
+      setWinCount(winCount + 1);
       request.accepts = 1;
     } else {
+      setLoseCount(loseCount + 1);
+      setWinStreak(0);
       request.fails = 1;
     }
     sendAnswer();
@@ -90,7 +108,7 @@ export function Questions() {
     request.challengeId = challenge.id;
     request.achievementId = 1;
     request.level = challenge.level;
-    request.class =themeId;
+    request.class = themeId;
     request.end_date = new Date().toLocaleDateString();
     try {
       await Api.patch(`characters-challenges/${resp.id}`, request);
@@ -115,7 +133,7 @@ export function Questions() {
     try {
       let request = {} as ICharacterThemeRequest;
       request.characterId = characterId;
-      request.themeId = themeId+1;
+      request.themeId = themeId + 1;
       request.isCompleted = false;
       await Api.post(`characters-themes/`, request);
       history.goBack();
@@ -123,70 +141,108 @@ export function Questions() {
       alert("ocorreu algum erro ao salvar");
     }
   }
+
+  async function isAproved() {
+    if (winCount >= 7) {
+      await postTheme();
+      startNewTheme();
+    } else {
+      history.goBack();
+    }
+  }
   return (
     <div className={styles.container}>
-      <Header needBack={true} isLogin={true} characterId={characterId}/>
+      <Header needBack={true} isLogin={true} characterId={characterId} />
       <img className={styles.logo} src={logo} alt="Logo" />
       <div className={styles.card}>
-        <Card>
-          {!isLast ? (
-            <div>
-              <div className={styles.questionTitle}>
-                <a>{challenge.name}</a>
-              </div>
-              <div className={styles.radioContainer}>
-                {answers.length > 0 ? (
-                  <div>
-                    {answers.map((answer: IAnswer) => (
-                      <div className={styles.radioContainer}>
-                        <input
-                          className={styles.radio}
-                          type="radio"
-                          value={answer.type}
-                          name="answer"
-                          disabled={confirm}
-                          onChange={() => setResponse(answer)}
-                        />
-                        <span
-                          className={
-                            confirm &&
-                            response.text === answer.text &&
-                            answer.type === "correct"
-                              ? styles.correctAnswer
-                              : styles.answer
-                          }
-                        >
-                          {answer.text}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+        {!loading ? (
+          <Card>
+            {!isLast ? (
+              <div>
+                <div className={styles.questionTitle}>
+                  <p>{formatText(challenge.name.valueOf())}</p>
+                </div>
+                {winStreak >= 1 ? (
+                  <p className={styles.streakText}>Sequencia de acertos: {winStreak}</p>
                 ) : null}
+                <div className={styles.radioContainer}>
+                  {answers.length > 0 ? (
+                    <div>
+                      {answers.map((answer: IAnswer) => (
+                        <div className={styles.radioContainer}>
+                          <input
+                            className={styles.radio}
+                            type="radio"
+                            value={answer.type}
+                            name="answer"
+                            disabled={confirm}
+                            onChange={() => setResponse(answer)}
+                          />
+                          <span
+                            className={
+                              confirm &&
+                              response.text === answer.text &&
+                              answer.type === "correct"
+                                ? styles.correctAnswer
+                                : styles.answer
+                            }
+                          >
+                            {formatText(answer.text)}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+                {!confirm ? (
+                  <Button name={"primary"} onClick={verifyAnswer}>
+                    Confirmar
+                  </Button>
+                ) : (
+                  <Button name={"primary"} onClick={onChangeQuestion}>
+                    Proxima
+                  </Button>
+                )}
               </div>
-              {!confirm ? (
-                <Button name={"primary"} onClick={verifyAnswer}>
-                  Confirmar
+            ) : (
+              <div className={styles.respContainer}>
+                <p className={styles.respTitle}>Resultado:</p>
+                <div className={styles.textArea}>
+                  <p className={styles.questionTitle}>
+                    Você acertou: {winCount}
+                  </p>
+                  <p className={styles.questionTitle}>
+                    Você errou: {loseCount}
+                  </p>
+                  {winCount >= 7 ? (
+                    <div>
+                      <p className={styles.questionTitle}>
+                        Parabens! você foi aprovado!
+                      </p>
+                      <p className={styles.questionTitle}>
+                        Clique no botão abaixo para desbloquear seu proximo
+                        tema!
+                      </p>
+                    </div>
+                  ) : (
+                    <div>
+                      <p className={styles.questionTitle}>
+                        Que pena, cheque nossa parte de conteudos e tente
+                        novamente!
+                      </p>
+                      <p className={styles.questionTitle}>
+                        Clique no botão abaixo para voltar para a home
+                      </p>
+                    </div>
+                  )}
+                </div>
+                <Button name={"primary"} onClick={() => isAproved()}>
+                  Inicio
                 </Button>
-              ) : (
-                <Button name={"primary"} onClick={onChangeQuestion}>
-                  Proxima
-                </Button>
-              )}
-            </div>
-          ) : (
-            <div>
-              <div className={styles.questionTitle}>
-                <a>
-                  As questôes deste tema terminaram, volte para o começo e
-                  inicie outro tema
-                </a>
               </div>
-              <Button name={"primary"} onClick={() => startNewTheme()}>
-                Inicio
-              </Button>
-            </div>
-          )}
-        </Card>
+            )}
+          </Card>
+        ) : null}
       </div>
     </div>
   );
